@@ -9,8 +9,8 @@ class RadioTest {
     @Test
     public void setStationTest() {
         Radio radioService = new Radio();
-        int expected = 7;
-        int actual = radioService.setStation();
+        int expected = 8;
+        int actual = radioService.setStation(8);;
         assertEquals(expected, actual);
     }
 
@@ -18,39 +18,76 @@ class RadioTest {
     public void setVolumeTest() {
         Radio radioService = new Radio();
         int expected = 5;
-        int actual = radioService.setVolume();
+        int actual = radioService.setVolume(5);
         assertEquals(expected, actual);
     }
 
     @Test
-    public void switchStationReverseTest() {
+    public void switchStationReverseTestTrue() {
         Radio radioService = new Radio();
-        int expected = 7;
+        radioService.setStation(0);
+        int expected = 9;
         int actual = radioService.switchStationReverse();
         assertEquals(expected, actual);
-
+    }
+    @Test
+    public void switchStationReverseTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setStation(6);
+        int expected = radioService.switchStationReverse();
+        int actual = radioService.switchStationReverse();
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void switchStationForwardTest() {
+    public void switchStationForwardTestTrue() {
         Radio radioService = new Radio();
-        int expected = 7;
+        radioService.setStation(9);
+        int expected = radioService.switchStationForward();
         int actual = radioService.switchStationForward();
         assertEquals(expected, actual);
     }
+    @Test
+    public void switchStationForwardTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setStation(6);
+        int expected = 7;
+        int actual = radioService.stationForward();
+        assertEquals(expected, actual);
+    }
 
     @Test
-    public void volumeIsMaxTest() {
+    public void volumeIsMaxTestTrue() {
         Radio radioService = new Radio();
-        int expected = 5;
+        radioService.setVolume(10);
+        int expected = 10;
         int actual = radioService.volumeIsMax();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void volumeIsLow() {
+    public void volumeIsMaxTestFalse() {
         Radio radioService = new Radio();
-        int expected = 5;
+        radioService.setVolume(7);
+        int expected = radioService.setVolumeHigher();
+        int actual = radioService.volumeIsMax();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void volumeIsLowTestTrue() {
+        Radio radioService = new Radio();
+        radioService.setVolume(0);
+        int expected = 0;
+        int actual = radioService.volumeIsLow();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void volumeIsLowTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setVolume(5);
+        int expected = radioService.setVolumeLower();
         int actual = radioService.volumeIsLow();
         assertEquals(expected, actual);
     }
@@ -58,33 +95,64 @@ class RadioTest {
     @Test
     public void setVolumeLowerTest() {
         Radio radioService = new Radio();
-        int expected = 4;
+        int expected = 0;
         int actual = radioService.setVolumeLower();
         assertEquals(expected, actual);
     }
 
     @Test
-    public void setVolumeHigherTest() {
+    public void setVolumeHigherTestTrue() {
         Radio radioService = new Radio();
-        int expected = 6;
+        radioService.setVolume(8);
+        int expected = 9;
+        int actual = radioService.setVolumeHigher();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setVolumeHigherTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setVolume(10);
+        int expected = radioService.volumeIsMax();
         int actual = radioService.setVolumeHigher();
         assertEquals(expected, actual);
     }
 
 
     @Test
-    public void stationReverseTest() {
+    public void stationReverseTestTrue() {
         Radio radioService = new Radio();
+        radioService.setStation(7);
         int expected = 6;
         int actual = radioService.stationReverse();
         assertEquals(expected, actual);
     }
+    @Test
+    public void stationReverseTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setStation(0);
+        int expected = 0;
+        int actual = radioService.stationReverse();
+        assertEquals(expected, actual);
+    }
+
 
     @Test
-    public void stationForwardTest() {
+    public void stationForwardTestTrue() {
         Radio radioService = new Radio();
+        radioService.setStation(7);
         int expected = 8;
         int actual = radioService.stationForward();
         assertEquals(expected, actual);
     }
+    @Test
+    public void stationForwardTestFalse() {
+        Radio radioService = new Radio();
+        radioService.setStation(9);
+        int expected = 9;
+        int actual = radioService.stationForward();
+        assertEquals(expected, actual);
+    }
+
+
 }
