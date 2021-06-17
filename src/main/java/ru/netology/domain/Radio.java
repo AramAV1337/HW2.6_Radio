@@ -39,8 +39,14 @@ public class Radio {
         return currentStation;
     }
 
-    public int setStation(int currentStation) {
-        this.currentStation = currentStation;
+    public void setStation(int currentStation) {
+       if (currentStation > maxStationNum) {
+           return;
+       }
+       this.currentStation = currentStation;
+    }
+
+    public int getCurrentStation(){
         return currentStation;
     }
 
@@ -72,8 +78,13 @@ public class Radio {
         return currentVolume;
     }
 
-    public int setVolume(int currentVolume) {
+    public void setVolume(int currentVolume) {
+        if (currentVolume > maxVolume) {
+            return;
+        }
         this.currentVolume = currentVolume;
+    }
+    public int getCurrentVolume() {
         return currentVolume;
     }
 }

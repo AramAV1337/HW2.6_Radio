@@ -9,16 +9,18 @@ class RadioTest {
     @Test
     public void setStationTest() {
         Radio radioService = new Radio();
-        int expected = 8;
-        int actual = radioService.setStation(8);;
+        radioService.setStation(10);
+        int expected = 7;
+        int actual = radioService.getCurrentStation();;
         assertEquals(expected, actual);
     }
 
     @Test
     public void setVolumeTest() {
         Radio radioService = new Radio();
-        int expected = 5;
-        int actual = radioService.setVolume(5);
+        radioService.setVolume(11);
+        int expected = 0;
+        int actual = radioService.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
