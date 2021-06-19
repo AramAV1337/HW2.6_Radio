@@ -19,7 +19,7 @@ class RadioTest {
     public void setVolumeTest() {
         Radio radioService = new Radio();
         radioService.setVolume(11);
-        int expected = 0;
+        int expected = 11;
         int actual = radioService.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -114,8 +114,8 @@ class RadioTest {
     @Test
     public void setVolumeHigherTestFalse() {
         Radio radioService = new Radio();
-        radioService.setVolume(10);
-        int expected = radioService.volumeIsMax();
+        radioService.setVolume(11);
+        int expected = 12;
         int actual = radioService.setVolumeHigher();
         assertEquals(expected, actual);
     }
