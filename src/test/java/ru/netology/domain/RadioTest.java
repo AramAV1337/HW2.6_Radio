@@ -7,11 +7,36 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
+    public void radioSetStationByUser() {
+        Radio radioService = new Radio(7, 0);
+        int expected = 7;
+        int actual = radioService.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void radioSetStationByDefault() {
+        Radio radioService = new Radio();
+        int expected = 10;
+        int actual = radioService.getCurrentStation();
+        assertEquals(expected, actual);
+
+    }
+    @Test
+    public void radioSetVolumeByUserTest() {
+        Radio radioService = new Radio(0,90);
+        int expected = 90;
+        int actual = radioService.getCurrentVolume();
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
     public void setStationTest() {
         Radio radioService = new Radio();
         radioService.setStation(10);
-        int expected = 7;
-        int actual = radioService.getCurrentStation();;
+        int expected = 10;
+        int actual = radioService.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -28,7 +53,7 @@ class RadioTest {
     public void switchStationReverseTestTrue() {
         Radio radioService = new Radio();
         radioService.setStation(0);
-        int expected = 9;
+        int expected = 10;
         int actual = radioService.switchStationReverse();
         assertEquals(expected, actual);
     }
@@ -151,7 +176,7 @@ class RadioTest {
     public void stationForwardTestFalse() {
         Radio radioService = new Radio();
         radioService.setStation(9);
-        int expected = 9;
+        int expected = 10;
         int actual = radioService.stationForward();
         assertEquals(expected, actual);
     }
