@@ -21,15 +21,14 @@ public class Radio {
     public Radio(int currentStation, int currentVolume) {
         this.currentStation = currentStation;
         this.currentVolume = currentVolume;
-
     }
 
 
-
-    public Radio(){
+    public Radio() {
 
     }
 
+}
 // Станции
 
     public int stationForward() {
