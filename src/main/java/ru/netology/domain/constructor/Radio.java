@@ -1,4 +1,4 @@
-package ru.netology.domain;
+package ru.netology.domain.constructor;
 
 public class Radio {
     private int currentStation = 10;
@@ -28,7 +28,7 @@ public class Radio {
 
     }
 
-}
+
 // Станции
 
     public int stationForward() {
@@ -61,13 +61,13 @@ public class Radio {
     }
 
     public void setStation(int currentStation) {
-       if (currentStation > maxStationNum) {
-           return;
-       }
-       this.currentStation = currentStation;
+        if (currentStation > maxStationNum) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
-    public int getCurrentStation(){
+    public int getCurrentStation() {
         return currentStation;
     }
 
@@ -105,7 +105,9 @@ public class Radio {
         }
         this.currentVolume = currentVolume;
     }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
 }
+
